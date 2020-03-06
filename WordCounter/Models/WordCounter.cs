@@ -27,18 +27,10 @@ namespace Word.Models
 
       foreach (var word in wordsArr)
       {
-        string wordString = "";
-        foreach (var letter in word)
-        {
-          if (Array.IndexOf(_specialChar, letter) == -1)
-          {
-            wordString += letter;
-          }
-        }
-        resultList.Add(wordString.ToLower());
+        resultList.Add(NormalizeWord(word).ToLower());
       }
-      string result = String.Join(" ", resultList.ToArray());
-      return result;
+
+      return String.Join(" ", resultList.ToArray());
     }
 
     public static bool ValidateWord(string word)
