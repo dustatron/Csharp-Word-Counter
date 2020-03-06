@@ -20,14 +20,23 @@ namespace Word.Models
       string result = resultChar.Trim(_numbers);
       return result.ToLower();
     }
-    public static string NormalizeSentence(string sentence)
+    public static string NormalizeSentence(string sentence, out int notWord)
     {
       string[] wordsArr = sentence.Split(' ');
+      notWord = 0;
       List<string> resultList = new List<string>(5);
 
       foreach (var word in wordsArr)
       {
-        resultList.Add(NormalizeWord(word).ToLower());
+        string normalizedWord = NormalizeWord(word).ToLower();
+        if (ValidateWord(normalizedWord))
+        {
+          resultList.Add(normalizedWord);
+        }
+        else
+        {
+          notWord++;
+        }
       }
 
       return String.Join(" ", resultList.ToArray());
@@ -39,7 +48,7 @@ namespace Word.Models
       IEnumerable<String> wordList = File.ReadLines(WordListPath[0]);
       foreach (var item in wordList)
       {
-        if (item == word)
+        if (item.ToLower() == word.ToLower())
         {
           return true;
         }

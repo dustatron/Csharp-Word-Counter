@@ -32,15 +32,26 @@ namespace Word.Tests
     {
       string testSentence = "Thank you for being a friend";
       string goodResult = "thank you for being a friend";
-      Assert.AreEqual(goodResult, Counter.NormalizeSentence(testSentence));
+      int notWords;
+      Assert.AreEqual(goodResult, Counter.NormalizeSentence(testSentence, out notWords));
     }
 
     [TestMethod] //4
     public void NormalizeSentence_RemoveSpecialCharacters_ReturnObject()
     {
-      string testSentence = "<>Thank #you @for being a friend!?|";
+      string testSentence = "<> Thank you @for being a friend!?|";
       string goodResult = "thank you for being a friend";
-      Assert.AreEqual(goodResult, Counter.NormalizeSentence(testSentence));
+      int notWords;
+      Assert.AreEqual(goodResult, Counter.NormalizeSentence(testSentence, out notWords));
+    }
+    [TestMethod] //4
+    public void NormalizeSentence_ReturnsHowManyNonWordsFound_ReturnObject()
+    {
+      string testSentence = "Thank you for being a Globlab Globlab Globlab friend";
+      int goodResult = 3;
+      int notWords;
+      string Sentence = Counter.NormalizeSentence(testSentence, out notWords);
+      Assert.AreEqual(goodResult, notWords);
     }
     //--------------   Validate is english word  --------------- \\
     [TestMethod] //5
