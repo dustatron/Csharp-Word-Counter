@@ -94,5 +94,26 @@ namespace Word.Tests
       Assert.AreEqual(goodCount, result);
 
     }
+
+    [TestMethod]
+    public void ReturnCount_ReturnNumberOfTimesWordFoundInSentenceWithOtherWordOption_Int()
+    {
+      string word = "Walmart";
+      string testSentence = @"If it's a car you lack
+                              I'd surely buy you a Cadillac
+                              Whatever you need any time of the day or night
+                              I'm not ashamed to say
+                              I hope it always will stay this way
+                              My hat is off, won't you stand up and take a bow
+                              And when we both get older
+                              With walking canes and hair of gray
+                              Have no fear even… Walmart";
+
+      int goodCount = 1;
+      int result = Counter.ReturnCount(testSentence, word);
+
+      Assert.AreEqual(goodCount, result);
+
+    }
   }
 }
