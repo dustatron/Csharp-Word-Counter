@@ -4,14 +4,16 @@ using System;
 
 namespace Word.Tests
 {
-  //change name of test class.
+  
   [TestClass]
   public class CounterTests
   {
     [TestMethod]
-    public void MethodName_WhatItDoes_ReturnObject()
+    public void Validate_ReturnNormalizedWord_ReturnObject()
     {
-
+      string testWord = "Friend!";
+      string goodResult = "friend";
+      Assert.AreEqual(goodResult, Counter.Validate(testWord));
     }
 
   }
