@@ -6,7 +6,7 @@ namespace Word.Tests
 {
   //change name of test class.
   [TestClass]
-  public class ChangeNameOfClassTests
+  public class CounterTests
   {
     [TestMethod]
     public void MethodName_WhatItDoes_ReturnObject()
