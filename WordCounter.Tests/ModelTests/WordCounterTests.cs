@@ -60,5 +60,38 @@ namespace Word.Tests
       string testWord = "cat";
       Assert.IsTrue(Counter.ValidateWord(testWord), "Validate word returned False");
     }
+    [TestMethod] //5
+    public void ValidateWord_CheckWordAMAZINGInDictionary_True()
+    {
+      string testWord = "AMAZING";
+      Assert.IsTrue(Counter.ValidateWord(testWord), "Validate word AMAZING returned False");
+    }
+
+    //--------------   Return Count  --------------- \\
+    [TestMethod]
+    public void ReturnCount_ReturnNumberOfTimesWordFoundInSentence_Int()
+    {
+      string word = "you";
+      string testSentence = @"Thank you for being a friend Thank you for being a friend
+                              Traveled down a road and back again
+                              Your heart is true, you're a pal and a confidant
+                              I'm not ashamed to say
+                              I hope it always will stay this way
+                              My hat is off, won't you stand up and take a bow
+                              And if you threw a party
+                              Invited everyone you knew
+                              Well, you would see the biggest gift would be from me
+                              And the card attached would say
+                              Thank you for being a friend
+                              Thank you for being a friend
+                              Thank you for being a friend
+                              Thank you for being a friend";
+
+      int goodCount = 11;
+      int result = Counter.ReturnCount(testSentence, word);
+
+      Assert.AreEqual(goodCount, result);
+
+    }
   }
 }

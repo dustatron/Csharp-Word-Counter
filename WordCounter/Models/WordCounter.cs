@@ -50,7 +50,7 @@ namespace Word.Models
 
       foreach (var item in wordList)
       {
-        if (item.ToLower() == word)
+        if (item.ToLower() == word.ToLower())
         {
           return true;
         }
@@ -58,6 +58,20 @@ namespace Word.Models
 
       return false;
 
+    }
+
+    public static int ReturnCount(string sentence, string checkWord)
+    {
+      string[] sentenceArray = sentence.Split(' ');
+      int count = 0;
+      foreach (string word in sentenceArray)
+      {
+        if (word == checkWord)
+        {
+          count++;
+        }
+      }
+      return count;
     }
   }
 
