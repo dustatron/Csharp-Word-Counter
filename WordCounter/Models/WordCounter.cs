@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Word.Models
 {
@@ -19,10 +20,23 @@ namespace Word.Models
     }
     public static string NormalizeSentence(string sentence)
     {
+      string[] wordsArr = sentence.Split(' ');
+      List<string> resultList = new List<string>(5);
 
-      //Remove Numbers
-      string result = sentence;
-      return result.ToLower();
+      foreach (var word in wordsArr)
+      {
+        string wordString = "";
+        foreach (var letter in word)
+        {
+          if (Array.IndexOf(_specialChar, letter) == -1)
+          {
+            wordString += letter;
+          }
+        }
+        resultList.Add(wordString.ToLower());
+      }
+      string result = String.Join(" ", resultList.ToArray());
+      return result;
     }
   }
 

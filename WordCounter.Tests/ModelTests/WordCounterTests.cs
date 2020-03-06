@@ -37,7 +37,7 @@ namespace Word.Tests
     [TestMethod] //4
     public void NormalizeSentence_RemoveSpecialCharacters_ReturnObject()
     {
-      string testSentence = "<>Thank #you @for $being &a friend!";
+      string testSentence = "<>Thank #you @for being a friend!?|";
       string goodResult = "thank you for being a friend";
       Assert.AreEqual(goodResult, Counter.NormalizeSentence(testSentence));
     }
