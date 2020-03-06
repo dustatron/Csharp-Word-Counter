@@ -38,6 +38,11 @@ namespace Word.Models
       string result = String.Join(" ", resultList.ToArray());
       return result;
     }
+
+    public static bool ValidateWord(string word)
+    {
+      return false;
+    }
   }
 
 }

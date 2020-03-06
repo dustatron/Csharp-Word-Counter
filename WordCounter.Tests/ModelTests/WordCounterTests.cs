@@ -8,7 +8,7 @@ namespace Word.Tests
   [TestClass]
   public class CounterTests
   {
-    //--------------   Normalize
+    //--------------   Normalize word --------------- \\
 
     [TestMethod] //1
     public void NormalizeWord_ReturnNormalizedWord_ReturnObject()
@@ -26,6 +26,7 @@ namespace Word.Tests
       Assert.AreEqual(goodResult, Counter.NormalizeWord(testWord));
     }
 
+    //--------------   Normalize Sentence --------------- \\
     [TestMethod] //3
     public void NormalizeSentence_ReturnSentenceLowerCase_ReturnObject()
     {
@@ -41,6 +42,12 @@ namespace Word.Tests
       string goodResult = "thank you for being a friend";
       Assert.AreEqual(goodResult, Counter.NormalizeSentence(testSentence));
     }
-
+    //--------------   Validate is english word  --------------- \\
+    [TestMethod] //5
+    public void ValidateWord_CheckWordInDictionary_True()
+    {
+      string testWord = "cat";
+      Assert.IsTrue(Counter.ValidateWord(testWord), "Validate word returned False");
+    }
   }
 }
