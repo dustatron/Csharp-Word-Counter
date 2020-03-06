@@ -72,7 +72,8 @@ namespace Word.Tests
     public void ReturnCount_ReturnNumberOfTimesWordFoundInSentence_Int()
     {
       string word = "you";
-      string testSentence = @"Thank you for being a friend Thank you for being a friend
+      string testSentence = @"Thank you for being a friend. 
+                              Thank you for being a friend.
                               Traveled down a road and back again
                               Your heart is true, you're a pal and a confidant
                               I'm not ashamed to say
@@ -87,7 +88,7 @@ namespace Word.Tests
                               Thank you for being a friend
                               Thank you for being a friend";
 
-      int goodCount = 11;
+      int goodCount = 10;
       int result = Counter.ReturnCount(testSentence, word);
 
       Assert.AreEqual(goodCount, result);
