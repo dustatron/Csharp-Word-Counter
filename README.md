@@ -51,6 +51,8 @@ dotnet run
 Behavoir | Input | Output
 :---------:|:------:|:------:
 User will input a word and the computer will return if word is valid | 'you' | true
+The program will remove all special characters from word normalize to lowercase | 'Friend!' | 'friend'
+The program will remove all numbers from word | 'friend8' | 'friend'
 User will input a word with a number in it and the computer will return if word is valid | 'you8' | false
 User inputs a sentence and the program will return the sentance is Valid | 'Thank you for being a friend' | true
 User inputs a sentence with a non-word the program will return the sentance is Valid | 'Thank you for b3ing a friend' | false
