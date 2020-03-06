@@ -39,7 +39,7 @@ namespace Word.Tests
     [TestMethod] //4
     public void NormalizeSentence_RemoveSpecialCharacters_ReturnObject()
     {
-      string testSentence = "<> Thank you @for being a friend!?|";
+      string testSentence = "<>Thank you @for being a friend!?|";
       string goodResult = "thank you for being a friend";
       int notWords;
       Assert.AreEqual(goodResult, Counter.NormalizeSentence(testSentence, out notWords));
@@ -47,7 +47,7 @@ namespace Word.Tests
     [TestMethod] //4
     public void NormalizeSentence_ReturnsHowManyNonWordsFound_ReturnObject()
     {
-      string testSentence = "Thank you for being a Globlab Globlab Globlab friend";
+      string testSentence = "Thank you for being a WalMart SafeWay COVIDNinteen friend";
       int goodResult = 3;
       int notWords;
       string Sentence = Counter.NormalizeSentence(testSentence, out notWords);

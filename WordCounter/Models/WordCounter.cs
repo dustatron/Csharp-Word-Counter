@@ -35,6 +35,7 @@ namespace Word.Models
         }
         else
         {
+          resultList.Add(normalizedWord);
           notWord++;
         }
       }
@@ -46,9 +47,10 @@ namespace Word.Models
     {
       string[] WordListPath = Directory.GetFiles("../../../../WordCounter/Models", "*.txt");
       IEnumerable<String> wordList = File.ReadLines(WordListPath[0]);
+
       foreach (var item in wordList)
       {
-        if (item.ToLower() == word.ToLower())
+        if (item.ToLower() == word)
         {
           return true;
         }
