@@ -47,9 +47,9 @@ namespace Word.Tests
     {
       string testSentence = "Thank you for being a WalMart SafeWay COVIDNinteen friend";
       int goodResult = 3;
-      Counter.BadWord = 0;
+      Counter.MissSpelled = 0;
       string Sentence = Counter.NormalizeSentence(testSentence);
-      Assert.AreEqual(goodResult, Counter.BadWord);
+      Assert.AreEqual(goodResult, Counter.MissSpelled);
     }
     //--------------   Validate is english word  --------------- \\
     [TestMethod] //5
