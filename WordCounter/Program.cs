@@ -25,6 +25,8 @@ namespace Word
       catch (Exception ex)
       {
         Console.WriteLine(ex.Message);
+        Console.WriteLine(ex.Source);
+        Console.WriteLine(ex.StackTrace);
       }
 
       Copy.Readout(result, inputSentence, inputWord);

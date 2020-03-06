@@ -7,6 +7,7 @@ namespace Word.Models
   //change name of class.
   public class Counter
   {
+    public static int BadWord { get; set; }
     private static char[] _specialChar = new Char[] { '!', '@', '#', '$', '^', '&', '*', '(', ')', '_', '-', '=', '+', ',', '.', '\\', '/', '`', '~', ':', ';', '{', '}', '[', ']', '|', '?', '<', '>' };
 
     private static char[] _numbers = new Char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
@@ -19,24 +20,19 @@ namespace Word.Models
       string result = resultChar.Trim(_numbers);
       return result.ToLower();
     }
-    public static string NormalizeSentence(string sentence, out int notWord)
+    public static string NormalizeSentence(string sentence)
     {
       string[] wordsArr = sentence.Split(' ');
-      notWord = 0;
       List<string> resultList = new List<string>(5);
 
       foreach (var word in wordsArr)
       {
         string normalizedWord = NormalizeWord(word).ToLower();
-        if (ValidateWord(normalizedWord))
+        if (!ValidateWord(normalizedWord))
         {
-          resultList.Add(normalizedWord);
+          BadWord++;
         }
-        else
-        {
-          resultList.Add(normalizedWord);
-          notWord++;
-        }
+        resultList.Add(normalizedWord);
       }
 
       return String.Join(" ", resultList.ToArray());
@@ -45,8 +41,14 @@ namespace Word.Models
     //Checks if word is in wordlist.txt
     public static bool ValidateWord(string word)
     {
-      string[] WordListPath = Directory.GetFiles("../../../../WordCounter/Models", "*.txt");
-      IEnumerable<String> wordList = File.ReadLines(WordListPath[0]);
+      string path = Path.Combine(Environment.CurrentDirectory);
+      int debugInPath = path.IndexOf("Debug");
+      string wordListPath = "../../../../wordlist.txt";
+      if (debugInPath == -1)
+      {
+        wordListPath = "../wordlist.txt";
+      }
+      IEnumerable<String> wordList = File.ReadLines(wordListPath);
 
       foreach (var item in wordList)
       {
@@ -62,11 +64,16 @@ namespace Word.Models
 
     public static int ReturnCount(string sentence, string checkWord)
     {
-      string[] sentenceArray = sentence.Split(' ');
+
+      string cleanSentence = NormalizeSentence(sentence);
+      string cleanWord = checkWord.ToLower();
+
+
+      string[] sentenceArray = cleanSentence.Split(' ');
       int count = 0;
       foreach (string word in sentenceArray)
       {
-        if (word == checkWord)
+        if (word == cleanWord)
         {
           count++;
         }
