@@ -12,8 +12,9 @@ namespace Word.Models
     public static string Validate(string word)
     {
       //Remove special Characters
-      string result = word.Trim(_specialChar);
-
+      string resultChar = word.Trim(_specialChar);
+      //Remove Numbers
+      string result = resultChar.Trim(_numbers);
       return result.ToLower();
     }
   }
