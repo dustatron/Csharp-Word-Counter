@@ -21,7 +21,7 @@ namespace Word.Models
     {
 
       //Remove Numbers
-      string result = "";
+      string result = sentence;
       return result.ToLower();
     }
   }
