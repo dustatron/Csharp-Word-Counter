@@ -4,7 +4,7 @@ using System;
 
 namespace Word.Tests
 {
-  
+
   [TestClass]
   public class CounterTests
   {
@@ -12,6 +12,13 @@ namespace Word.Tests
     public void Validate_ReturnNormalizedWord_ReturnObject()
     {
       string testWord = "Friend!";
+      string goodResult = "friend";
+      Assert.AreEqual(goodResult, Counter.Validate(testWord));
+    }
+    [TestMethod]
+    public void Validate_ReturStringWithoutNumbers_ReturnObject()
+    {
+      string testWord = "Friend8";
       string goodResult = "friend";
       Assert.AreEqual(goodResult, Counter.Validate(testWord));
     }
