@@ -72,7 +72,7 @@ namespace Word.Views
       }
       Type($"Your sentence was {sentence.Length} character long.", 50, true);
       Type($"It included the word {word} {result} {times}.", 50, true);
-      Type($"It included {Word.Models.Counter.BadWord} words that were spelled wrong.", 50, true);
+      Type($"It included {Word.Models.Counter.MissSpelled} words that were spelled wrong.", 50, true);
       Type($"Would you like to try again?", 50, true);
       Type($"Press [Y] for yes or [Q] to quit.", 50, true);
     }

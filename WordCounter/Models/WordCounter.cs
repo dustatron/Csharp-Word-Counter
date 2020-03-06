@@ -7,7 +7,7 @@ namespace Word.Models
   //change name of class.
   public class Counter
   {
-    public static int BadWord { get; set; }
+    public static int MissSpelled { get; set; }
     private static char[] _specialChar = new Char[] { '!', '@', '#', '$', '^', '&', '*', '(', ')', '_', '-', '=', '+', ',', '.', '\\', '/', '`', '~', ':', ';', '{', '}', '[', ']', '|', '?', '<', '>' };
 
     private static char[] _numbers = new Char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
@@ -30,7 +30,7 @@ namespace Word.Models
         string normalizedWord = NormalizeWord(word).ToLower();
         if (!ValidateWord(normalizedWord))
         {
-          BadWord++;
+          MissSpelled++;
         }
         resultList.Add(normalizedWord);
       }
@@ -43,10 +43,10 @@ namespace Word.Models
     {
       string path = Path.Combine(Environment.CurrentDirectory);
       int debugInPath = path.IndexOf("Debug");
-      string wordListPath = "../../../../wordlist.txt";
+      string wordListPath = "../../../wordlist.txt";
       if (debugInPath == -1)
       {
-        wordListPath = "../wordlist.txt";
+        wordListPath = "wordlist.txt";
       }
       IEnumerable<String> wordList = File.ReadLines(wordListPath);
 
