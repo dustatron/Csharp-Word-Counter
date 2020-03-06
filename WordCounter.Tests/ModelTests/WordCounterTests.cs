@@ -32,8 +32,7 @@ namespace Word.Tests
     {
       string testSentence = "Thank you for being a friend";
       string goodResult = "thank you for being a friend";
-      int notWords;
-      Assert.AreEqual(goodResult, Counter.NormalizeSentence(testSentence, out notWords));
+      Assert.AreEqual(goodResult, Counter.NormalizeSentence(testSentence));
     }
 
     [TestMethod] //4
@@ -41,17 +40,16 @@ namespace Word.Tests
     {
       string testSentence = "<>Thank you @for being a friend!?|";
       string goodResult = "thank you for being a friend";
-      int notWords;
-      Assert.AreEqual(goodResult, Counter.NormalizeSentence(testSentence, out notWords));
+      Assert.AreEqual(goodResult, Counter.NormalizeSentence(testSentence));
     }
     [TestMethod] //4
     public void NormalizeSentence_ReturnsHowManyNonWordsFound_ReturnObject()
     {
       string testSentence = "Thank you for being a WalMart SafeWay COVIDNinteen friend";
       int goodResult = 3;
-      int notWords;
-      string Sentence = Counter.NormalizeSentence(testSentence, out notWords);
-      Assert.AreEqual(goodResult, notWords);
+      Counter.BadWord = 0;
+      string Sentence = Counter.NormalizeSentence(testSentence);
+      Assert.AreEqual(goodResult, Counter.BadWord);
     }
     //--------------   Validate is english word  --------------- \\
     [TestMethod] //5
@@ -98,19 +96,13 @@ namespace Word.Tests
     [TestMethod]
     public void ReturnCount_ReturnNumberOfTimesWordFoundInSentenceWithOtherWordOption_Int()
     {
-      string word = "Walmart";
-      string testSentence = @"If it's a car you lack
-                              I'd surely buy you a Cadillac
-                              Whatever you need any time of the day or night
-                              I'm not ashamed to say
-                              I hope it always will stay this way
-                              My hat is off, won't you stand up and take a bow
-                              And when we both get older
-                              With walking canes and hair of gray
-                              Have no fear even… Walmart";
+      string testWord = "Walmart";
+      string testSentence = "I only ship through of sea of walmart DVDs";
+
 
       int goodCount = 1;
-      int result = Counter.ReturnCount(testSentence, word);
+      int result = Counter.ReturnCount(testSentence, testWord);
+      Console.WriteLine(Counter.NormalizeSentence(testSentence));
 
       Assert.AreEqual(goodCount, result);
 
