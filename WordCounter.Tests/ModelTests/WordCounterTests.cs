@@ -9,18 +9,18 @@ namespace Word.Tests
   public class CounterTests
   {
     [TestMethod]
-    public void Validate_ReturnNormalizedWord_ReturnObject()
+    public void Normalize_ReturnNormalizedWord_ReturnObject()
     {
       string testWord = "Friend!";
       string goodResult = "friend";
-      Assert.AreEqual(goodResult, Counter.Validate(testWord));
+      Assert.AreEqual(goodResult, Counter.Normalize(testWord));
     }
     [TestMethod]
-    public void Validate_ReturStringWithoutNumbers_ReturnObject()
+    public void Normalize_ReturStringWithoutNumbers_ReturnObject()
     {
       string testWord = "Friend8";
       string goodResult = "friend";
-      Assert.AreEqual(goodResult, Counter.Validate(testWord));
+      Assert.AreEqual(goodResult, Counter.Normalize(testWord));
     }
 
   }
