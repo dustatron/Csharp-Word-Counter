@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace Word.Models
 {
@@ -41,7 +43,18 @@ namespace Word.Models
 
     public static bool ValidateWord(string word)
     {
+      string[] WordListPath = Directory.GetFiles("../../../../WordCounter/Models", "*.txt");
+      IEnumerable<String> wordList = File.ReadLines(WordListPath[0]);
+      foreach (var item in wordList)
+      {
+        if (item == word)
+        {
+          return true;
+        }
+      }
+
       return false;
+
     }
   }
 
