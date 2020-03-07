@@ -7,6 +7,7 @@ namespace Word.Views
 {
   public class Copy
   {
+    //Method that tpyes to screen with a small delay between characters. 
     public static void Type(string line1, int speed, bool nextLine)
     {
       for (int i = 0; i < line1.Length; i++)
@@ -26,6 +27,7 @@ namespace Word.Views
 
     }
 
+    //Opening view
     public static void FirstRun(out string inputSentence, out string inputWord)
     {
       Console.BackgroundColor = ConsoleColor.Blue;
@@ -63,6 +65,7 @@ namespace Word.Views
       Type("Completed...", 50, true);
     }
 
+    //Render results from methods.
     public static void Readout(int result, string sentence, string word)
     {
       string times = "times";
@@ -77,6 +80,7 @@ namespace Word.Views
       Type($"Press [Y] for yes or [Q] to quit.", 50, true);
     }
 
+    //Render ending statements. 
     public static void isStaying(bool staying)
     {
       if (staying)

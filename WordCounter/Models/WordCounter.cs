@@ -4,7 +4,6 @@ using System.IO;
 
 namespace Word.Models
 {
-  //change name of class.
   public class Counter
   {
     public static int MissSpelled { get; set; }
